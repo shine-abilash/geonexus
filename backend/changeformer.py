@@ -1,12 +1,13 @@
 import os
-from click import prompt
-import requests
 import json
-from openai import OpenAI
+from openai import AsyncOpenAI
+from agents import OpenAIChatCompletionsModel
 
-OPENROUTER_BASE_URL = os.environ.get("openrouter_url")
 OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY")
 if not OPENROUTER_API_KEY:
     raise ValueError("Set the OPENROUTER_API_KEY environment variable before running this script.")
 
-MODEL = "qwen/qwen-2.5-vl-7b-instruct:free" 
+model = AsyncOpenAI(
+    api_key=OPENROUTER_API_KEY,
+    base_url="https://openrouter.ai/api/v1",
+)
