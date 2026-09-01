@@ -827,3 +827,7 @@ At the bottom of the main dashboard show:
 “BETTER PREDICTION → LOWER RADIATION RISK → SAFER MISSIONS → PROTECT ASTRONAUTS”
 
 Build the complete frontend now with realistic mock data and working navigation/interactions.
+
+
+
+1 446 936 704
