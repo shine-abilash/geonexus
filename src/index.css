@@ -1,0 +1,391 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+/* ─── Design Tokens ─── */
+:root {
+  --void: #03060f;
+  --abyss: #060b1a;
+  --deep: #0a1628;
+  --hull: #0f1f38;
+  --panel: rgba(10, 22, 40, 0.7);
+  --ion: #00c8ff;
+  --ion-dim: rgba(0, 200, 255, 0.15);
+  --ion-glow: rgba(0, 200, 255, 0.4);
+  --plasma: #38bdf8;
+  --safe: #22c55e;
+  --safe-glow: rgba(34, 197, 94, 0.35);
+  --warn: #f59e0b;
+  --warn-glow: rgba(245, 158, 11, 0.35);
+  --danger: #ef4444;
+  --danger-glow: rgba(239, 68, 68, 0.35);
+  --text-primary: #e2ecff;
+  --text-secondary: #7ea8c9;
+  --text-muted: #3f5f80;
+  --border: rgba(0, 200, 255, 0.12);
+  --border-bright: rgba(0, 200, 255, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background-color: var(--void);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--abyss); }
+::-webkit-scrollbar-thumb { background: var(--ion-glow); border-radius: 3px; }
+
+/* ─── Glassmorphism Card ─── */
+.glass-card {
+  background: var(--panel);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.glass-card-bright {
+  background: rgba(15, 31, 56, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-bright);
+  border-radius: 16px;
+  box-shadow: 0 0 20px var(--ion-dim), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+/* ─── Glow Effects ─── */
+.glow-ion { box-shadow: 0 0 20px var(--ion-glow), 0 0 60px rgba(0,200,255,0.1); }
+.glow-safe { box-shadow: 0 0 20px var(--safe-glow); }
+.glow-warn { box-shadow: 0 0 20px var(--warn-glow); }
+.glow-danger { box-shadow: 0 0 20px var(--danger-glow); }
+
+.text-ion { color: var(--ion); }
+.text-safe { color: var(--safe); }
+.text-warn { color: var(--warn); }
+.text-danger { color: var(--danger); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+
+/* ─── Monospace Data ─── */
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ─── Pulse animations ─── */
+@keyframes pulse-ion {
+  0%, 100% { opacity: 1; box-shadow: 0 0 6px var(--ion); }
+  50% { opacity: 0.6; box-shadow: 0 0 18px var(--ion), 0 0 30px var(--ion-glow); }
+}
+@keyframes pulse-safe {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; box-shadow: 0 0 18px var(--safe); }
+}
+@keyframes data-flow {
+  0% { transform: translateY(0); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+@keyframes scan-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(400%); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes star-twinkle {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+@keyframes rotate-orbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes slide-in-left {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+@keyframes fade-up {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes neural-pulse {
+  0%, 100% { r: 4; opacity: 0.6; }
+  50% { r: 6; opacity: 1; }
+}
+@keyframes flow-dot {
+  0% { offset-distance: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+
+.animate-pulse-ion { animation: pulse-ion 2s ease-in-out infinite; }
+.animate-pulse-safe { animation: pulse-safe 2s ease-in-out infinite; }
+.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-fade-up { animation: fade-up 0.6s ease-out forwards; }
+.animate-slide-in { animation: slide-in-left 0.4s ease-out forwards; }
+
+/* ─── Star field ─── */
+.starfield {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: star-twinkle linear infinite;
+}
+
+/* ─── Pipeline arrows ─── */
+.pipeline-arrow {
+  position: relative;
+}
+.pipeline-arrow::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 20px;
+  background: linear-gradient(to bottom, var(--ion), transparent);
+}
+
+/* ─── Risk bar ─── */
+.risk-bar-fill {
+  height: 6px;
+  border-radius: 3px;
+  transition: width 1s ease;
+}
+
+/* ─── Neural network SVG ─── */
+.neural-node {
+  fill: var(--ion);
+  filter: drop-shadow(0 0 4px var(--ion));
+}
+.neural-edge {
+  stroke: var(--ion-glow);
+  stroke-width: 1;
+  fill: none;
+}
+
+/* ─── Stat number ─── */
+.stat-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--ion);
+}
+
+/* ─── Section heading ─── */
+.section-heading {
+  font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.section-eyebrow {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ion);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ─── Formula card ─── */
+.formula-display {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  color: var(--ion);
+  text-shadow: 0 0 20px var(--ion-glow);
+  text-align: center;
+  padding: 1rem;
+  background: rgba(0, 200, 255, 0.06);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 200, 255, 0.2);
+  letter-spacing: 0.04em;
+}
+
+/* ─── Live indicator ─── */
+.live-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--safe);
+  border-radius: 50%;
+  animation: pulse-safe 1.5s ease-in-out infinite;
+  box-shadow: 0 0 6px var(--safe);
+  flex-shrink: 0;
+}
+
+/* ─── Sidebar ─── */
+.sidebar {
+  background: rgba(6, 11, 26, 0.95);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid var(--border);
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  position: relative;
+  white-space: nowrap;
+}
+.nav-item:hover {
+  background: var(--ion-dim);
+  color: var(--text-primary);
+}
+.nav-item.active {
+  background: rgba(0, 200, 255, 0.15);
+  color: var(--ion);
+  border: 1px solid rgba(0, 200, 255, 0.25);
+}
+.nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 60%;
+  background: var(--ion);
+  border-radius: 0 2px 2px 0;
+  box-shadow: 0 0 8px var(--ion);
+}
+
+/* ─── Chart zones ─── */
+.recharts-reference-area rect {
+  rx: 4;
+}
+
+/* ─── Location marker ─── */
+.loc-marker {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 0.85rem;
+  border: 2px solid currentColor;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: absolute;
+}
+.loc-marker:hover {
+  transform: scale(1.15);
+  z-index: 10;
+}
+.loc-marker.safe-loc {
+  color: var(--safe);
+  background: rgba(34, 197, 94, 0.15);
+  box-shadow: 0 0 20px var(--safe-glow);
+}
+.loc-marker.warn-loc {
+  color: var(--warn);
+  background: rgba(245, 158, 11, 0.1);
+}
+.loc-marker.danger-loc {
+  color: var(--danger);
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* ─── Horizontal scrollable tabs ─── */
+.tab-bar {
+  display: flex;
+  gap: 0.5rem;
+  background: rgba(6, 11, 26, 0.6);
+  border-radius: 10px;
+  padding: 4px;
+  border: 1px solid var(--border);
+}
+.tab-btn {
+  padding: 0.4rem 1rem;
+  border-radius: 7px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  transition: all 0.2s;
+}
+.tab-btn.active {
+  background: rgba(0, 200, 255, 0.15);
+  color: var(--ion);
+  border: 1px solid rgba(0, 200, 255, 0.3);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .sidebar { position: fixed; z-index: 50; height: 100vh; }
+  .sidebar-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 49; }
+}
+
+/* ─── Mission flow line ─── */
+.flow-line {
+  width: 2px;
+  background: linear-gradient(to bottom, var(--ion), transparent);
+  min-height: 32px;
+  margin: 0 auto;
+  position: relative;
+}
+.flow-line::after {
+  content: '▼';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--ion);
+  font-size: 0.6rem;
+  animation: pulse-ion 2s ease-in-out infinite;
+}
+
+/* ─── Comparison bar ─── */
+.comp-bar-bg {
+  height: 8px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.comp-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
