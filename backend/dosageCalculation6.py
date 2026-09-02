@@ -1,3 +1,4 @@
+# pyrefly: ignore [missing-import]
 from stoppingpower5 import stoppingpower
 import numpy as np
 def doseageCalculation(stopping_power, proton_fluence,energy):
