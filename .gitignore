@@ -1,3 +1,5 @@
 .venv
 backend/formulas/stoppingpower5_backup.py
 backend/formulas/stoppingpower5_backup2.py
+Datasets/
+node_modules/
