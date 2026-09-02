@@ -11,13 +11,10 @@ def calculate_spectral_index(energy, flux):
 
     return gamma, J0
 
+# energy = np.array([10, 20, 40, 80, 100])
+# flux = np.array([1000, 500, 250, 125, 100])
 
-# Input data
-energy = np.array([10, 20, 40, 80, 100])
-flux = np.array([1000, 500, 250, 125, 100])
+# gamma, J0 = calculate_spectral_index(energy, flux)
 
-# Function call
-gamma, J0 = calculate_spectral_index(energy, flux)
-
-print("Spectral Index (γ):", gamma)
-print("Normalization constant (J0):", J0)
+# print("Spectral Index (γ):", gamma)
+# print("Normalization constant (J0):", J0)

@@ -1,0 +1,21 @@
+[project]
+name = "geonexus"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "RitikM-AiDev", email = "ritik.aidev@gmail.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "netcdf4>=1.7.4",
+    "pandas>=3.0.5",
+    "xarray>=2026.7.0",
+]
+
+[project.scripts]
+geonexus = "geonexus:main"
+
+[build-system]
+requires = ["uv_build>=0.12.1,<0.13.0"]
+build-backend = "uv_build"
