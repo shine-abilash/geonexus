@@ -19,6 +19,7 @@ dependencies = [
     "tensorflow>=2.21.0",
     "torch>=2.13.0",
     "xarray>=2026.7.0",
+    
 ]
 
 [project.scripts]
