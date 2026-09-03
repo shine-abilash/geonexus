@@ -1,0 +1,6 @@
+Sample_ID,Scenario,SEP_Probability,SEP_Probability_Percent,Prediction_Warning
+1,Scenario 1: Major Solar Eruption (X-Class Flare & Fast CME),0.6232,62.32%,🚨 SEP EVENT WARNING
+2,Scenario 2: Active Region Eruption with High Particle Acceleration,0.5044,50.44%,🚨 SEP EVENT WARNING
+3,Scenario 3: Complex Magnetic Active Region (High Flux),0.7014,70.14%,🚨 SEP EVENT WARNING
+4,Scenario 4: Moderate Solar Flare Activity,0.5542,55.42%,🚨 SEP EVENT WARNING
+5,Scenario 5: Low-level Background Solar Activity,0.3121,31.21%,🚨 SEP EVENT WARNING
